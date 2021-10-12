@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-md">
+    <h1 class="display-2 text-center mt-2 mb-5">Chats</h1>
+    <div class="list-group list-group-flush mb-5">
+        {% for chat in chats %}
+        <a href="{% url 'chat' chat.id %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-primary text-ellipsis">{{chat.members}}</h5>
+                <small class="text-muted text-nowrap tz-localize">{{chat.latestmessage.sent_at.isoformat}}</small>
+            </div>
+            <p class="mb-1 text-ellipsis">{{chat.latestmessage.content}}</p>
+            <small class="text-muted">
+                {% for circle in chat.circles %}
+                <span class="badge bg-secondary">{{circle.name}}</span>
+                {% endfor %}
+            </small>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

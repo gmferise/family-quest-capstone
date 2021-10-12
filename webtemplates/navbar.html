@@ -4,6 +4,7 @@
 {% url 'login' as login %}
 {% url 'logout' as logout %}
 {% url 'signup' as signup %}
+{% url 'chats' as chats %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
     <a class="navbar-brand" href="{{home}}">Family Quest</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,6 +15,9 @@
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{{profile}}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{chats}}">Chats</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{social_circles}}">Social Circles</a>

@@ -14,3 +14,8 @@
 .btn-close:hover {
     border: 1px solid grey;
 }
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

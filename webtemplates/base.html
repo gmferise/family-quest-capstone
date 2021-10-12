@@ -17,4 +17,13 @@
     {% block body %}
     {% endblock %}
 </body>
+<!-- Timezone Localizer -->
+<script>
+    document.querySelectorAll('.tz-localize').forEach(elm => {
+        if (elm.innerText != '') {
+            date = new Date(elm.innerText);
+            elm.innerText = getDateString(date);
+        }
+    });
+</script>
 </html>

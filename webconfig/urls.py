@@ -30,10 +30,12 @@ urlpatterns = [
     path('api/notifs/<slug:notif_slug>/', NotifsDetailEndpoint.as_view()),
     
     # Views
-    path('',frontend.Home.as_view(),name='home'),
-    path('admin/', admin.site.urls,name='admin'),
-    path('logout/',frontend.Logout.as_view(),name='logout'),
-    path('signup/',frontend.Signup.as_view(),name='signup'),
-    path('login/',frontend.Login.as_view(),name='login'),
+    path('', frontend.Home.as_view(), name='home'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('logout/', frontend.Logout.as_view(), name='logout'),
+    path('signup/', frontend.Signup.as_view(), name='signup'),
+    path('login/', frontend.Login.as_view(), name='login'),
+    path('chats/', frontend.AllChats.as_view(), name='chats'),
+    path('chat/<int:chat_id>/', frontend.SingleChat.as_view(), name='chat')
 ]
 
