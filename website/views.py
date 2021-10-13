@@ -67,7 +67,7 @@ class AllChats(LoginRequiredMixin, View):
             chats.append({
                 "id":chat.id,
                 "latestmessage":chat.messages.order_by('sent_at').last(),
-                "members":", ".join([str(m) for m in chat.members.exclude(id=request.user.id)]),
+                "members":[str(m) for m in chat.members.exclude(id=request.user.id)],
                 "circles": circles
             })
         # sort by latest message date first
@@ -77,4 +77,9 @@ class AllChats(LoginRequiredMixin, View):
 class SingleChat(LoginRequiredMixin, View):
 
     def get(self, request, chat_id):
-        return render(request, 'chat.html', {"chat":Chat.objects.get(chat_id)})
+        chat = Chat.objects.get(id=chat_id)
+        context = {
+            "chat":chat,
+            "members":", ".join([str(m) for m in chat.members.exclude(id=request.user.id)]),
+            }
+        return render(request, 'chat.html', context)

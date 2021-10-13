@@ -19,3 +19,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.text-decoration-hover-only:not(:hover) {
+    text-decoration: none;
+}
+a {
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+<div class="container-md mb-5">
+    <h1 class="display-6 text-center mt-2 mb-5">{{members}}</h1>
+    <div class="list-group list-group-flush justify-content-end mb-3"></div>
+    <form id="send-chat">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control fs-5" placeholder="Message..." aria-label="Message" aria-describedby="send-button">
+            <button class="btn btn-primary fs-5" type="submit" id="send-button">Send</button>
+        </div>
+    </form>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script>
+        new ChatWidget(document.querySelector(".container-md"), "{{chat.id}}");
+    </script>
+</div>
+{% endblock %}

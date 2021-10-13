@@ -1,5 +1,5 @@
 class NotificationWidget {
-    constructor(element, CSRFToken) {
+    constructor(element) {
         this.element = element;
         this.notificationsElement = this.element.querySelector(".notifications");
         this.headerElement = this.element.querySelector("h5");
