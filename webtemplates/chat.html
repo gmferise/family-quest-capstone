@@ -3,9 +3,9 @@
 {% block body %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/chat.css' %}">
-<div class="container-md mb-5">
-    <h1 class="display-6 text-center mt-2 mb-5">{{members}}</h1>
-    <div class="list-group list-group-flush justify-content-end mb-3"></div>
+<div class="container-md mb-3 d-flex flex-column flex-grow-1 flex-shrink-1 h-100">
+    <h1 class="display-6 text-center my-3">{{members}}</h1>
+    <div class="list-group list-group-flush mb-3 d-block flex-grow-1 flex-shrink-1 pretty-scrollbar"></div>
     <form id="send-chat">
         <div class="input-group mb-3">
             <input type="text" class="form-control fs-5" placeholder="Message..." aria-label="Message" aria-describedby="send-button">

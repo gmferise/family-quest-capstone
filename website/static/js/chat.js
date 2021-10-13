@@ -12,13 +12,14 @@ class ChatWidget {
 
         this.getChats = this.getChats.bind(this);
         this.sendChat = this.sendChat.bind(this);
+        this.resetScroll = this.resetScroll.bind(this);
 
         this.element.querySelector("#send-chat").addEventListener("submit", (event) => {
             event.preventDefault();
             this.sendChat();
         });
 
-        this.getChats();
+        this.getChats().then(this.resetScroll);
         setInterval(this.getChats, 10000);
     }
     async getChats() {
@@ -47,6 +48,7 @@ class ChatWidget {
         }
         this.chatElement.value = "";
         this.setLoading(false);
+        this.resetScroll();
     }
     async setLoading(bool) {
         if (bool) {
@@ -64,7 +66,7 @@ class ChatWidget {
                     </a>
                     <div class="mb-1 flex-grow-1">
                         <div class="d-flex">
-                            <a class="text-primary me-auto fs-5 text-decoration-hover-only"href="/user/${chat.author.account_id}/">${chat.author.name || chat.author.email}</a>
+                            <a class="text-primary me-auto fs-5 text-ellipsis text-decoration-hover-only"href="/user/${chat.author.account_id}/">${chat.author.name || chat.author.email}</a>
                             <small class="text-muted text-nowrap ms-2">${getDateString(new Date(chat.sent_at))}</small>
                         </div>
                         <div>${chat.content}</div>
@@ -73,5 +75,8 @@ class ChatWidget {
                 this.chatsElement.append(item);
             }
         }
+    }
+    resetScroll() {
+        this.chatsElement.scrollBy(0, this.chatsElement.scrollHeight);
     }
 }

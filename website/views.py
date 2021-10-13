@@ -56,7 +56,7 @@ class AllChats(LoginRequiredMixin, View):
         chatobjs = Chat.objects.filter(members__in=[request.user])
         chats = []
         # include only chats that have at least 1 message
-        for chat in [c for c in chatobjs if c.messages.count() > 1]:
+        for chat in [c for c in chatobjs if c.messages.count() >= 1]:
             circles = []
             members = chat.members.all()
             # if all members in a chat have people, find the intersection of their family circles

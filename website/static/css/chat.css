@@ -1,18 +1,20 @@
-html, body {
+html {
     height: 100%;
 }
 body {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 .container-md {
-    flex-grow: 1; 
-    flex-shrink: 1;
-    flex-basis: 1px;
+    min-height: 0;
 }
 .list-group {
-
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* min-height: 0; */
 }
+
 .portrait {
     width: 4em;
     height: 4em;
