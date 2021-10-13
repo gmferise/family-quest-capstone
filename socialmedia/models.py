@@ -138,6 +138,9 @@ class CommentNotification(BaseNotification):
             'created_at': self.created_at,
             'url': f"reverse('comment detail view name or post detail view name with hash, fixme when one exists', {self.target_comment.id})",
         }
+    
+    def __str__(self):
+        return f'Comment notif for {self.target_user} from {self.target_comment.author}'
 
 class MessageNotification(BaseNotification):
     """
@@ -166,6 +169,9 @@ class MessageNotification(BaseNotification):
             'created_at': self.created_at,
             'url': reverse('chat', args=[self.target_message.chat.id]),
         }
+    
+    def __str__(self):
+        return f'Post notif for {self.target_user} from {self.target_message.author}'
 
 class Chat(models.Model):
     """

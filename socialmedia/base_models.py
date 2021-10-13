@@ -24,10 +24,6 @@ class BaseNotification(models.Model):
         auto_now_add=True,
     )
 
-    def __str__(self):
-        t = self.TARGET_MODEL.split('.')[1]
-        return f'Notif for {self.target_user} about a {t}'
-
 class BaseReaction(models.Model):
     """
     To extend, add a TARGET_MODEL and target FK field
