@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.core.mail import send_mail
 from django.core.validators import EmailValidator
+from django.urls import reverse
 
 from unicodedata import normalize
 
@@ -80,10 +81,14 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
                 'account_id': self.id,
                 'person_id': self.person.id,
                 'email': self.email,
+                'profile_url': reverse('user_detail', self.id),
+                'photo_url': f'/static/uploads{self.profile_photo.url}',
                 'name': str(self.person),
                 'tagline': self.person.tagline,
             }
         return {
             'account_id': self.id,
             'email': self.email,
+            'profile_url': reverse('user_detail', self.id),
+            'photo_url': f'/static/images/default.png',
         }

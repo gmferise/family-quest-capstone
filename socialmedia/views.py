@@ -12,6 +12,9 @@ from json import (
 )
 
 class ChatEndpoint(BaseEndpoint):
+    pass
+
+class ChatDetailEndpoint(BaseEndpoint):
 
     def get(self, request, chat_id):
         """Get all messages in this chat"""
