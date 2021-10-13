@@ -9,7 +9,7 @@ body {
 .container-md {
     min-height: 0;
 }
-.list-group {
+.chats-list {
     overflow-y: scroll;
     overflow-x: hidden;
     /* min-height: 0; */
