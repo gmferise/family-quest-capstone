@@ -17,6 +17,8 @@ from json import (
     loads as hydrate_json,
 )
 
+from django.urls import reverse
+
 class ChatsEndpoint(BaseEndpoint):
     
     def get(self, request):
@@ -48,6 +50,7 @@ class ChatsEndpoint(BaseEndpoint):
             last_message = chat.messages.order_by('-sent_at').first()
             json_chats.append({
                 'id': chat.id,
+                'url': reverse('chat', args=[chat.id]),
                 'latestmessage': {
                     'content': last_message.content,
                     'sent_at': last_message.sent_at,
