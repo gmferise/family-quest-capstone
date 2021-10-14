@@ -14,8 +14,7 @@ class UserSearchEndpoint(BaseEndpoint):
         
         search_terms = ''.join(
             char for char in search
-            if ( ord(char) >= 48 and ord(char) <= 122 )
-            or char == ' '
+            if char.lower() in '0123456789abcdefghijklmnopqrstuvwxyz@._ '
         ).split(' ')
 
         if len(search_terms) == 1:
