@@ -24,12 +24,17 @@ from socialmedia.views import (
     NotifsDetailEndpoint,
 )
 
+from useraccount.views import (
+    UserSearchEndpoint,
+)
+
 urlpatterns = [
     # Endpoints
     path('api/chats/', ChatsEndpoint.as_view()),
     path('api/chat/<int:chat_id>/', ChatDetailEndpoint.as_view()),
     path('api/notifs/', NotifsEndpoint.as_view()),
     path('api/notifs/<slug:notif_slug>/', NotifsDetailEndpoint.as_view()),
+    path('api/user/search/', UserSearchEndpoint.as_view()),
     
     # Views
     path('', frontend.Home.as_view(), name='home'),

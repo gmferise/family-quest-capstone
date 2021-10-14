@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import related
 from socialmedia.base_models import BaseReaction, BaseNotification
 from django.urls import reverse
 
@@ -182,6 +183,7 @@ class Chat(models.Model):
     members = models.ManyToManyField(
         'useraccount.UserAccount',
         verbose_name=_('members'),
+        related_name='chats',
     )
 
     def __str__(self):

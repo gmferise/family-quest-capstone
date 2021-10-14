@@ -92,7 +92,9 @@ class ChatsEndpoint(BaseEndpoint):
                     target_message=message,
                 )
 
-        return self.get(request)
+        return self.done(request, {
+            'url': reverse('chat', args=[chat.id]),
+        })
 
 
 
