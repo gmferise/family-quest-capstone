@@ -1,5 +1,4 @@
 from django.db import models
-from django.db.models.fields import related
 from socialmedia.base_models import BaseReaction, BaseNotification
 from django.urls import reverse
 
