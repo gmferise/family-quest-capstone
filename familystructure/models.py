@@ -92,11 +92,12 @@ class Person(models.Model):
 
     def __str__(self):
         middle = ''
+        end = f' {self.title}' if self.title else ''
         if self.nickname:
             middle += f' "{self.nickname}"'
         if self.middle_name:
             middle += f' {self.middle_name}'
-        return f'{self.first_name}{middle} {self.last_name}'
+        return f'{self.first_name}{middle} {self.last_name}{end}'
 
 
 class Relation(models.Model):
