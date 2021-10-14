@@ -1,3 +1,15 @@
 .create-button {
     margin-top: -6rem;
 }
+.chats-list.loading {
+    opacity: 0.8;
+}
+.suggestions {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    overflow: hidden;
+    transition: height 0.25s ease;
+    z-index: 1;
+    background-color: #fff;
+}

@@ -6,49 +6,45 @@
 <div class="container-md">
     <h1 class="display-2 text-center mt-2 mb-5">Chats</h1>
     <button class="btn btn-primary btn-lg float-end create-button" data-bs-toggle="modal" data-bs-target="#create-chat-modal">Create</button>
-    <div class="list-group mb-5">
-        {% for chat in chats %}
-        <a href="{% url 'chat' chat.id %}" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 text-ellipsis">
-                    <span class="fw-normal">
-                        {% if chat.members|length == 1 %}
-                        Chat with
-                        {% else %}
-                        Group Chat with
-                        {% endif %}
-                    </span>
-                    <span class="text-primary">{{chat.members|join:', '}}</span>
-                </h5>
-                <small class="text-muted text-nowrap tz-localize">{{chat.latestmessage.sent_at.isoformat}}</small>
-            </div>
-            <p class="mb-1 text-ellipsis">{{chat.latestmessage.content}}</p>
-            <small class="text-muted">
-                {% for circle in chat.circles %}
-                <span class="badge bg-secondary">{{circle.name}}</span>
-                {% endfor %}
-            </small>
-        </a>
-        {% endfor %}
+    <div class="chats-list list-group mb-5">
     </div>
 </div>
 <div id="create-chat-modal" class="modal fade" tabindex="-1" >
-    <div class="modal-dialog">
-        <form action="" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Chat</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Chat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="create-chat">
                 <div class="modal-body">
-                    TODO: Create form
+                    <h2>Add Participants</h2>
+                    <div class="input-group mb-3">
+                        <div class="list-group suggestions"></div>
+                        <input id="search-users" type="text" class="form-control" placeholder="Search by name or email address" aria-label="Message">
+                    </div>
+                    <small class="text-muted">Chat Participants</small>
+                    <div id="users-list" class="list-group mb-3">
+                        <div class="list-group-item d-flex align-items-center text-muted">
+                            <div class="me-auto">(You)</div>
+                        </div>
+                    </div>
+                    <h2>Opening Message</h2>
+                    <div class="mb-3">
+                        <input id="opening-message" type="text" class="form-control fs-5" placeholder="Message..." aria-label="Message">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary" disabled>Create</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-  </div>
+</div>
+<script src="{% static 'js/chats.js' %}"></script>
+<script>
+    new ChatsWidget(document.querySelector(".chats-list"));
+    new CreateChatForm(document.querySelector("#create-chat"));
+</script>
 {% endblock %}
