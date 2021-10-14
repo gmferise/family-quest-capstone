@@ -18,14 +18,16 @@ from django.urls import path
 from website import views as frontend
 
 from socialmedia.views import (
-    ChatEndpoint,
+    ChatsEndpoint,
+    ChatDetailEndpoint,
     NotifsEndpoint,
     NotifsDetailEndpoint,
 )
 
 urlpatterns = [
     # Endpoints
-    path('api/chat/<int:chat_id>/', ChatEndpoint.as_view()),
+    path('api/chats/', ChatsEndpoint.as_view()),
+    path('api/chat/<int:chat_id>/', ChatDetailEndpoint.as_view()),
     path('api/notifs/', NotifsEndpoint.as_view()),
     path('api/notifs/<slug:notif_slug>/', NotifsDetailEndpoint.as_view()),
     
@@ -36,6 +38,7 @@ urlpatterns = [
     path('signup/', frontend.Signup.as_view(), name='signup'),
     path('login/', frontend.Login.as_view(), name='login'),
     path('chats/', frontend.AllChats.as_view(), name='chats'),
-    path('chat/<int:chat_id>/', frontend.SingleChat.as_view(), name='chat')
+    path('chat/<int:chat_id>/', frontend.SingleChat.as_view(), name='chat'),
+    path('user/<int:user_id>/', frontend.Home.as_view(), name='user_detail')
 ]
 

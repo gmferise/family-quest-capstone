@@ -5,9 +5,7 @@
     <h1>Welcome!</h1>
     <p>
         (Signed in as {{user.email}})
-        {% if user.person %}
-            {% include 'generic_image.html' with photo=user.person.profile_photo style='width: 100px' class='example'%}
-        {% endif %}
+        {% include 'generic_image.html' with photo=user.person.profile_photo style='width: 100px' class='example'%}
     </p>
 </div>
 {% endblock %}

@@ -1,1 +1,5 @@
-<img style="{{style}}" class="{{class}}" src="static/uploads{{photo.url}}" />
+{% if photo %}
+<img style="{{style}}" class="{{class}}" src="/static/uploads{{photo.url}}" />
+{% else %}
+<img style="{{style}}" class="{{class}}" src="/static/images/default.png" />
+{% endif %}
